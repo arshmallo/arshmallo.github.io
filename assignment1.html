@@ -1,25 +1,91 @@
-<!DOCTYPE html> 
-<html> 
-    <head> 
-        <meta charset="utf-8"> 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <!--Page title in browser tab-->
+        <title>Arsh's HCDE 439 Physical Computing Page!</title>
 
+        <!--Links CSS sheet to HTML file-->
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
-    </head> 
-    <body> 
-
+    </head>
+    <body>
+        <!--Div block for page-->
         <div class="header">
-            <h1>Example Student's Assignment 1!</h1>
+
+            <!--Header for page-->
+            <h1>Arsh's Assignment 1!</h1>
+
+            <!--GIF of circuit-->
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="A1/demo.gif" width=400></a>
             </p>
+
+            <!--GIF caption-->
             <p>
-            Here is all the documentation for assignment 1!
+            Circuit in operation
+            </p>
+
+            <!--Schematic image-->
+            <p>
+            <img src="A1/schematic.jpg" width=400></a>
+            </p>
+
+            <!--Schematic caption-->
+            <p>
+            Circuit diagram
+            </p>
+
+            <!--Picture of circuit-->
+            <p>
+            <img src="A1/picture.jpg" width=400></a>
+            </p>
+
+            <!--Circuit picture caption-->
+            <p>
+            The circuit itself
+            </p>
+
+            <!--Break to separate circuit picture from code snippet-->
+            <br></br>
+            
+            <!--Arduino IDE code snippet-->
+            <p>
+            <pre>
+              <code>
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(200);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  delay(200);                       // wait for a second
+  digitalWrite(8, HIGH);
+  delay(200);
+  digitalWrite(8, LOW);
+  delay(200);
+  digitalWrite(7, HIGH);
+  delay(200);
+  digitalWrite(7, LOW);
+  delay(200);
+}
+              </code>
+            </pre>
+            </p>
+
+            <!--Code snippet caption-->
+            <p>
+            Arduino code snippet
             </p>
         </div>
-        
     </body>
 </html>
