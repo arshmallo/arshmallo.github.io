@@ -1,25 +1,105 @@
-<!DOCTYPE html> 
-<html> 
-    <head> 
-        <meta charset="utf-8"> 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <!--Page title in browser tab-->
+        <title>Arsh's HCDE 439 Physical Computing Page!</title>
 
+        <!--Links CSS sheet to HTML file-->
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
-    </head> 
-    <body> 
-
+    </head>
+    <body>
+        <!--Div block for page-->
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+
+            <!--Header for page-->
+            <h1>Arsh's Assignment 2!</h1>
+
+            <!--GIF of circuit-->
+            <h2>Circuit in operation</h2>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+              <img src="A2/demo.gif" width=400></a>
             </p>
+
+            <!--GIF caption-->
             <p>
-            Here is all the documentation for assignment 2!
+              When the button is pressed, the blue LED turns on, and the red LED fades in and out.
+            </p>
+            <br></br>
+
+            <!--Calculations image-->
+            <h2>Calculations</h2>
+            <p>
+              <img src="A2/calcs.jpg" width=400></a>
+            </p>
+
+            <!--Calculations caption-->
+            <p>
+              These are my calculations for the minimum resistance required for the LEDs and button. I used 330 ohm resistors to keep the amount of current flowing through the circuit to a safe level.
+            </p>
+            <br></br>
+
+            <!--Schematic image-->
+            <h2>Schematic</h2>
+            <p>
+              <img src="A2/schematic.png" width=400></a>
+            </p>
+            <br></br>
+
+            <!--Picture of circuit-->
+            <h2>Circuit</h2>
+            <p>
+              <img src="A2/pic.JPG" width=400></a>
+            </p>
+
+            <!--Break to separate circuit picture from code snippet-->
+            <br></br>
+
+            <!--Arduino IDE code snippet-->
+            <h2>Code Snippet</h2>
+            <p>
+            <pre>
+              <code>
+int buttonPin = 8;                        // number of pushbutton pin
+int ledBPin = 12;                         // number of blue LED pin
+int ledRPin = 11;                         // number of RGB LED pin
+int buttonState = 0;                      // variable for reading pushbutton status
+
+void setup() {
+  pinMode(buttonPin, INPUT);              // initialize pushbutton pin as an input
+  pinMode(ledBPin, OUTPUT);               // initialize blue LED pin as an output
+  pinMode(ledRPin, OUTPUT);               // initialize red LED pin as an output
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);   // reads the state of the pushbutton value
+
+  // if pushbutton is pressed
+  if (buttonState == HIGH) {
+    digitalWrite(ledBPin, HIGH);          // turn blue LED on
+
+    // fade red LED in from min to max in increments of 5 points
+    for (int fadeValue = 0; fadeValue <=255; fadeValue += 5) {
+      analogWrite(ledRPin, fadeValue);    // sets the value of RGBPin as a range from 0 to 255
+      delay(15);                          // wait for 30 milliseconds to see dimming effect
+    }
+
+    // fade red LED out from max to min in increments of 5 points
+    for (int fadeValue = 255; fadeValue >=0; fadeValue -= 5) {
+      analogWrite(ledRPin, fadeValue);    // sets the value of RGBPin as a range from 0 to 255
+      delay(15);                          // wait for 30 milliseconds to see dimming effect
+    }
+  } else {                                // if pushbutton is not pressed
+    digitalWrite(ledBPin, LOW);           // turn blue LED off
+    digitalWrite(ledRPin, LOW);           // turn red LED off
+  }
+}
+              </code>
+            </pre>
             </p>
         </div>
-        
     </body>
 </html>
