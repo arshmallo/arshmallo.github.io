@@ -4,61 +4,81 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <!--Page title in browser tab-->
         <title>Arsh's HCDE 439 Physical Computing Page!</title>
 
-        <!--Links CSS sheet to HTML file-->
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
     </head>
     <body>
-        <!--Div block for page-->
         <div class="header">
 
-            <!--Header for page-->
-            <h1>Arsh's Assignment 3!</h1>
+            <h1>Arsh's Assignment 4!</h1>
 
             <!--GIF of circuit-->
             <h2>Circuit in operation</h2>
             <p>
-              <img src="A3/demo.gif" width=400></a>
+              <img src="A4/demo.gif" width=400></a>
             </p>
 
-            <!--GIF caption-->
             <p>
-              When the photoresistor detects light, the RGB LED turns red, and when the photoresistor detects darkness, the RGB LED turns blue.
+              When the photoresistor detects light, the RGB LED turns red, and
+              when the photoresistor detects darkness, the RGB LED turns blue.
             </p>
             <br></br>
 
-            <!--Calculations image-->
             <h2>Calculations</h2>
             <p>
-              <img src="A3/calcs.jpg" width=400></a>
+              <pre>
+                <code>
+300 LEDs / 18 W = 30 LEDs / x W
+x = 1.8 watts
+
+P = IV
+1.8 = I*12
+I = 0.15 A
+                </code>
+              </pre>
             </p>
 
-            <!--Calculations caption-->
             <p>
-              These are my calculations for the minimum resistance required for the LED and photoresistor. I used 330Ω resistors to keep the amount of current flowing through the circuit to a safe level.
+              As listed on the back of the LED strip box, the entire strip
+              contains 300 LEDs and consumes 18 watts. I cut off a section of
+              the strip with 30 LEDs on it and used proportions to calculate
+              that my strip uses 1.8 watts. With that information, I solved for
+              current, which is 0.15 amps. The transistor can output a maximum
+              of 0.6 amps, so the circuit is operating safely.
             </p>
             <br></br>
 
-            <!--Schematic image-->
+            <p>
+              <pre>
+                <code>
+V = IR
+5 = 0.02*R
+R = 250 Ω
+                </code>
+              </pre>
+            </p>
+
+            <p>
+              This calculation shows the minimum resistance required for the
+              photoresistor. I used 330 Ω resistors to be safe.
+            </p>
+            <br></br>
+
             <h2>Schematic</h2>
             <p>
-              <img src="A3/schematic.png" width=400></a>
+              <img src="A4/schematic.png" width=400></a>
             </p>
             <br></br>
 
             <!--Picture of circuit-->
             <h2>Circuit</h2>
             <p>
-              <img src="A3/pic.jpg" width=400></a>
+              <img src="A4/pic.JPG" width=400></a>
             </p>
-
-            <!--Break to separate circuit picture from code snippet-->
             <br></br>
 
-            <!--Arduino IDE code snippet-->
             <h2>Code Snippet</h2>
             <p>
             <pre>
