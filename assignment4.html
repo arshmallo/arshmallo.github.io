@@ -21,8 +21,9 @@
             </p>
 
             <p>
-              When the photoresistor detects light, the RGB LED turns red, and
-              when the photoresistor detects darkness, the RGB LED turns blue.
+              When the photoresistor detects darkness, the LED strip brightens.
+              When it detects light, the LED strip dims, like a super bright,
+              annoying night light!
             </p>
             <br></br>
 
@@ -31,9 +32,9 @@
               <pre>
                 <code>
 300 LEDs / 18 W = 30 LEDs / x W
-x = 1.8 watts
+x = 1.8 W
 
-P = IV
+P = I*V
 1.8 = I*12
 I = 0.15 A
                 </code>
@@ -53,7 +54,7 @@ I = 0.15 A
             <p>
               <pre>
                 <code>
-V = IR
+V = I*R
 5 = 0.02*R
 R = 250 Ω
                 </code>
@@ -83,34 +84,26 @@ R = 250 Ω
             <p>
             <pre>
               <code>
-const int analogInPin = A0;           // analog input pin that the photoresistor is attached to
-const int rPin = 10;                   // analog input pin that the red from the RGB LED is connected to
-const int bPin = 9;                  // analog input pin that the blue from the RGB LED is connected to
+const int analogInPin = A0;     // analog input pin that photoresistor is connected to
+const int ledPin = 11;          // digital input pin that LED strip is connected to
 
-int sensorValue = 0;                  // value read from the photoresistor
-int outputValue = 0;                  // value output to the PWM (analog out)
+int sensorValue = 0;            // value read from photoresistor
+int outputValue = 0;            // value output to the PWM (analog out)
 
+// setting up pins and serial monitor
 void setup() {
-  Serial.begin(9600);                 // initialize serial communications at 9600 bps
-  pinMode(analogInPin, INPUT);        // set analog in pin as an input
-  pinMode(rPin, OUTPUT);              // set red pin as an output
-  pinMode(bPin, OUTPUT);              // set blue pin as an output
+  Serial.begin(9600);           // initialize serial communications at 9600 bps
+  pinMode(analogInPin, INPUT);  // set analog in pin as an input
+  pinMode(ledPin, OUTPUT);      // set LED strip pin as an output
 }
 
+// this function will loop forever
 void loop() {
-  sensorValue = analogRead(analogInPin);  // read analog in value
-  outputValue = map(sensorValue, 0, 2000, 0, 255);  //  map it to the range of the analog out
+  sensorValue = analogRead(analogInPin);    // read analog in value
+  outputValue = map(sensorValue, 900, 1100, 0, 1023);    // map it to the range of the analog out
 
-  if (sensorValue < 1000) {            // if the sensor value is below 500, turn the LED red
-    analogWrite(rPin, outputValue);   // map red pin to the output
-    analogWrite(bPin, 0);             // set the blue pin to 0
-    Serial.println("It is red!");     // print "It is red!" to the serial monitor
-  }
-  if (sensorValue > 1000) {                            // otherwise, turn the LED blue
-    analogWrite(bPin, outputValue);   // map blue pin to the output
-    analogWrite(rPin, 0);             // set the red pin to 0
-    Serial.println("It is blue!");    // print "It is blue!" to the serial monitor
-  }
+  analogWrite(ledPin, outputValue - 400);   // set the brightness of the LED strip to the output value minus 400 to make the change in brightness more obvious
+  Serial.println(sensorValue);              // write the sensor value to the serial monitor
 
   // wait 2 milliseconds before the next loop for the analog-to-digital
   // converter to settle after the last reading:
