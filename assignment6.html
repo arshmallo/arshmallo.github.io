@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+        <title>Arsh's Assignment 6!</title>
+
+        <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+        <div class="header">
+
+            <h1>Arsh's Assignment 6!</h1>
+
+            <!--GIF of circuit-->
+            <h2>Circuit in operation</h2>
+            <p>
+              <img src="A6/demo.gif" width=400></a>
+            </p>
+
+            <p>
+              When the photoresistor detects light, the graph dips in value, and
+              it remains high when the photoresistor detects darkness.
+            </p>
+            <br></br>
+
+            <h2>Calculations</h2>
+            <p>
+              <pre>
+                <code>
+V = I*R
+5 = 0.02*R
+R = 250 Ω
+                </code>
+              </pre>
+            </p>
+
+            <p>
+              This calculation shows the minimum resistance required for the
+              photoresistor. I used 330 Ω resistors to be safe.
+            </p>
+            <br></br>
+
+            <h2>Schematic</h2>
+            <p>
+              <img src="A6/schematic.png" width=400></a>
+            </p>
+            <br></br>
+
+            <!--Picture of circuit-->
+            <h2>Circuit</h2>
+            <p>
+              <img src="A6/pic.JPG" width=400></a>
+            </p>
+            <br></br>
+
+            <h2>Code Snippet</h2>
+            <p>
+            <pre>
+              <code>
+const int analogInPin = A0;                   // analog input pin that photoresistor is connected to
+int sensorValue = 0;                          // value read from photoresistor
+
+// setting up pin & serial monitor
+void setup() {
+  Serial.begin(9600);                         // begin serial communications at 9600 bps
+  pinMode(analogInPin, INPUT);                // set analog in pin A0 as an input
+}
+
+// this function will loop forever
+void loop() {
+  sensorValue = analogRead(analogInPin);      // read value from analog in pin
+  Serial.println(sensorValue);                // print sensor value to the serial monitor
+}
+              </code>
+            </pre>
+            </p>
+        </div>
+    </body>
+</html>
